@@ -14,6 +14,10 @@ class PokemonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon)
 
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
         val pokemon = intent.extras.getParcelable<Pokemon>("POKEMON")
         Toast.makeText(this,pokemon.nome,Toast.LENGTH_LONG).show()
 
@@ -32,5 +36,10 @@ class PokemonActivity : AppCompatActivity() {
             mediaPlayer.start();
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
